@@ -1,5 +1,8 @@
-import { collection } from "firebase/firestore";
 import database from "./database";
+import { collection } from "firebase/firestore";
 
 const propertyCollection = collection(database, "properties");
-export default propertyCollection;
+
+export {
+    propertyCollection
+}

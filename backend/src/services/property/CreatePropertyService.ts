@@ -1,6 +1,6 @@
 import { addDoc } from "firebase/firestore";
 import { property, PropertySchema } from "@schemas/property";
-import propertyCollection from "@utils/firebase/collections";
+import { propertyCollection } from "@utils/firebase/collections";
 
 class CreatePropertyService {
     async execute(payload: PropertySchema) {
