@@ -1,17 +1,23 @@
 import "dotenv/config";
+import "reflect-metadata"
 import express from "express";
+import connection from "@database/config/connection";
+import properties from "@routes/properties";
 
 function bootstrap() {
-    const SERVER_PORT = Number(process.env.SERVER_PORT) || 3000;
-    const SERVER_HOST = process.env.SERVER_HOST as string || "localhost";
+    const SERVER_PORT = Number(process.env.SERVER_PORT);
+    const SERVER_HOST = process.env.SERVER_HOST as string;
     const app = express();
 
     app.use(express.json());
     app.get('/', (req, res) => {
-        res.status(200).json(`Server is running on port ${SERVER_PORT}`);
+        res.status(200).json({  data: `Server is running on port ${SERVER_PORT}` });
     });
+    app.use("/property", properties);
 
     app.listen(SERVER_PORT, SERVER_HOST);
 }
 
-bootstrap();
+connection.initialize()
+.then(() => bootstrap())
+.catch((err) => console.log(err));
