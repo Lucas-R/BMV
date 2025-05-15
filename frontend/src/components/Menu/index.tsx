@@ -41,7 +41,7 @@ export default function Menu({ open }: NavProps) {
     }
 
     return(
-        <div className="fixed top-0 left-0 w-full h-20 bg-white">
+        <div className="fixed top-0 left-0 z-50 w-full h-20 bg-white">
             <Container py="md" className=" flex items-center justify-between h-full">
                 <Link className="font-poppins font-bold" href="/">BMV</Link>
 

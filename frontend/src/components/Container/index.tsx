@@ -8,12 +8,14 @@ const container = tv({
             default: "container mx-auto"
         },
         py: {
+            none: "p-0",
             sm: "py-2",
             md: "py-6",
             xl: "py-10",
             default: "py-4 md:py-10"
         },
         px: {
+            none: "p-0",
             sm: "px-2",
             md: "px-4",
             xl: "px-6",
