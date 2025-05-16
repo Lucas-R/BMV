@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 const price = tv({
-    base: "text-xl"
+    base: "text-xl font-semibold"
 });
 
 interface PriceProps extends VariantProps<typeof price>, HTMLAttributes<HTMLHeadingElement> {

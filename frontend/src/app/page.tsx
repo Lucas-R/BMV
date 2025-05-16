@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { NavigationOptions } from 'swiper/types';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { faArrowAltCircleLeft, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleLeft, faBed, faCarSide, faChevronLeft, faChevronRight, faDoorOpen, faRuler, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
 import Container from "@componets/Container"
 import Menu from "@componets/Menu";
 import Button from '@componets/Button';
@@ -14,6 +14,7 @@ import Icon from '@componets/Icon';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from 'next/link';
 
 const mockSlide = [
   {
@@ -167,31 +168,37 @@ function Releases() {
           {mockSlide.map(item => {
             return (
               <SwiperSlide key={item.alt}>
-                <div className="w-full h-auto grid grid-cols-1 grid-rows-2 gap-5 overflow-hidden">
-                  <img
-                    className="w-full h-full object-cover rounded-md" 
-                    src={item.src} 
-                    alt={item.alt} 
-                  />
-                  <div>
-                    <h4 className="text-2xl mb-3">{item.title}</h4>
+                <Link 
+                  href={item.alt} 
+                  className="w-full h-auto overflow-hidden md:grid md:grid-cols-12 md:gap-10 md:items-center"
+                >
+                  <div className="group w-full h-56 object-cover rounded-md mb-4 md:mb-0 md:h-full md:col-span-6 lg:col-span-7 lg:max-h-[500px] overflow-hidden" >
+                    <img
+                      className="w-full h-full group-hover:scale-110 duration-500" 
+                      src={item.src} 
+                      alt={item.alt} 
+                    />
+                  </div>
+                  <div className="md:col-span-6 lg:col-span-5">
+                    <h4 className="text-2xl text-primary font-semibold mb-3">{item.title}</h4>
                     <p className="text-base mb-6">{item.description}</p>
                     <div className="flex gap-x-1">
-                      { !!item.area && <p>Área Útil {item.area} m²</p> }
-                      { !!item.total && <p>Área Total {item.total} m²</p> }
+                      { !!item.area && <p className="font-semibold"> Área Útil {item.area} m²</p> }
+                      { !!item.total && <p className="font-semibold">{!!item.area && (<span>|</span>)} Área Total {item.total} m²</p> }
                     </div>
                     <div className="flex gap-x-1 mb-4">
-                      { !!item.room && <p>Quartos {item.room}</p> }
-                      { !!item.suite && <p>Suites {item.suite}</p> }
-                      { !!item.garage && <p>Vagas {item.garage}</p> }
+                      { !!item.room && <p className="font-semibold"> Quartos {item.room}</p> }
+                      { !!item.suite && <p className="font-semibold">{ !!item.room && (<span>|</span>) } Suites {item.suite}</p> }
+                      { !!item.garage && <p className="font-semibold">{ (!!item.suite || !!item.room) && (<span>|</span>) } Vagas {item.garage}</p> }
                     </div>
-                    <Price value={item.price}/>
+                    <Price className="mb-6" value={item.price}/>
+                    <Button className="md:max-w-96" w="full" theme="primary"> Ver imóvel </Button>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             )
           })}
-          <div className="flex items-center justify-between mt-1">
+          <div className="flex items-center justify-between mt-10">
             <div className="my-pagination" />
             <div className="flex justify-end gap-x-2">
               <button ref={prevRef} className="w-10 h-10 text-primary border border-primary rounded-full hover:bg-primary hover:text-white">
