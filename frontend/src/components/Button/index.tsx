@@ -1,7 +1,7 @@
 import { tv, VariantProps } from "tailwind-variants"
 
 const button = tv({
-    base: "flex items-center justify-center rounded-md font-semibold uppercase duration-300",
+    base: "flex items-center justify-center rounded-md uppercase duration-300 hover:scale-105",
     variants: {
         w: {
             full: "w-full",
@@ -9,11 +9,11 @@ const button = tv({
         },
         size: {
             sm: "py-2 px-6 text-sm",
-            md: "py-4 px-8 text-base",
+            md: "py-2 px-8 text-sm",
             default: "py-2 px-4 text-base"
         },
         theme: {
-            primary: "bg-primary text-white hover:scale-105",
+            primary: "bg-primary text-white",
             default: ""
         }
     },

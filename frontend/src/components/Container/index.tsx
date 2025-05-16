@@ -12,7 +12,7 @@ const container = tv({
             sm: "py-2",
             md: "py-6",
             xl: "py-10",
-            default: "py-4 md:py-10"
+            default: "py-10 md:py-20"
         },
         px: {
             none: "p-0",

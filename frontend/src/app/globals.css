@@ -25,3 +25,24 @@ button {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+.swiper-pagination{
+  @apply !w-auto;
+}
+
+.swiper-pagination-bullet.default-bullet{
+  @apply w-1.5 h-1.5 bg-primary scale-90;
+}
+
+.swiper-pagination-bullet.default-bullet.swiper-pagination-bullet-active{
+  @apply bg-primary scale-100;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
